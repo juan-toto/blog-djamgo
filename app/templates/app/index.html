@@ -1,0 +1,83 @@
+{% extends "app/base.html" %}
+
+{% load static  %}
+
+{% block contenido %}
+
+{% if request.path == '/' %}
+<div class="p-4 p-md-5 mb-4 rounded text-bg-info">
+  <div class="col-md-12 px-0">
+    <h1 class="display-4 fst-italic text-white">Título del último post</h1>
+    <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
+    <p class="lead mb-0"><a href={% url "post" %} class="text-white fw-bold">Seguir leyendo...</a></p>
+  </div>
+</div>
+{% endif %}
+
+{% if request.path == '/autor' %}
+<div class="alert alert-success" role="alert">
+  Todos los Posts con la categoría: <strong>Autor</strong>
+</div>
+{% endif %}
+
+{% if request.path == '/datos' %}
+<div class="alert alert-success" role="alert">
+  Todos los Posts publicados en: <strong>MES Y AÑO</strong>
+</div>
+{% endif %}
+
+{% if request.path == '/categoria' %}
+<div class="alert alert-success" role="alert">
+  Todos los Posts con la categoría: <strong>CATEGORIA</strong>
+</div>
+{% endif %}
+
+<div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-5">
+      <img src={% static "app/img/trabajo.png" %} class="img-fluid rounded-start" alt="...">
+    </div>
+
+    <div class="col-md-7">
+      <div class="card-body">
+        <strong class="d-inline-block mb-2 text-primary">Categoría</strong>
+        <h4 class="mb-0">Título del Post</h4>
+        <div class="mb-1 text-muted">Nov 12</div>
+        <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+        <p class="card-text"><small class="text-muted"><a href={% url "post" %} class="stretched-link">Seguir leyendo</a></small></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-7">
+      <div class="card-body">
+        <strong class="d-inline-block mb-2 text-primary">Categoría</strong>
+        <h4 class="mb-0">Título del Post</h4>
+        <div class="mb-1 text-muted">Nov 12</div>
+        <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+        <p class="card-text"><small class="text-muted"><a href={% url "post" %} class="stretched-link">Seguir leyendo</a></small></p>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <img src={% static "app/img/contact-bg.png" %} class="img-fluid rounded-end float-end" alt="...">
+    </div>
+  </div>
+</div>
+
+<!-- NAVEGACION ENTRE ARTICULOS MAS ANTIGUOS - PAGINACION -->
+<nav class="blog-pagination" aria-label="Pagination">
+  <a class="btn btn-primary rounded-pill" href="#">Anterior</a>
+  <a class="btn btn-secondary rounded-pill disabled">Último</a>
+</nav>
+
+{% if request.path != '/'%}
+<div class="my-3">
+  <a class="btn btn-success rounded-pill" href={% url "home" %}>Volver al Inicio</a>
+</div>
+{% endif %}
+
+{% endblock  %}
