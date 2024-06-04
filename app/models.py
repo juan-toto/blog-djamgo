@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Categoria(models.Model):
-    nombre = models.CharField(max_length=50, unique=True, verbose_name='nombre')
-    activo = models.BooleanField(default=True, verbose_name='activo')
+    nombre = models.CharField(max_length=50, unique=True, verbose_name='Nombre')
+    activo = models.BooleanField(default=True, verbose_name='Activo')
     created = models.DateTimeField(auto_now_add=True,verbose_name='Fecha de creacion')
     updated = models.DateTimeField(auto_now=True, verbose_name='Fecha de modificacion')
 
@@ -17,8 +17,8 @@ class Categoria(models.Model):
         return self.nombre
     
 class Etiqueta(models.Model):
-    nombre = models.CharField(max_length=50, unique=True, verbose_name='nombre')
-    activo = models.BooleanField(default=True, verbose_name='activo')
+    nombre = models.CharField(max_length=50, unique=True, verbose_name='Nombre')
+    activo = models.BooleanField(default=True, verbose_name='Activo')
     created = models.DateTimeField(auto_now_add=True,verbose_name='Fecha de creacion')
     updated = models.DateTimeField(auto_now=True, verbose_name='Fecha de modificacion')
 
@@ -51,3 +51,16 @@ class Post(models.Model):
 
     def __str__(self):
         return self.titulo
+
+class sobre_mi(models.Model):
+    descripcion = models.CharField(max_length=350, verbose_name='descripcion') 
+    created = models.DateTimeField(auto_now_add=True,verbose_name='Fecha de creacion')
+    updated = models.DateTimeField(auto_now=True, verbose_name='Fecha de modificacion')
+
+    class Meta:
+        verbose_name = 'hacerca'
+        verbose_name_plural = 'hacerca de'
+        ordering = ['-created']
+
+    def __str__(self):
+        return self.descripcion
